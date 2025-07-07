@@ -1,0 +1,166 @@
+===============================================================================
+                    FLIGHT ROUTE ANALYSIS - QUICK REFERENCE
+===============================================================================
+
+CROSS-PLATFORM COMMAND REFERENCE CARD
+Copy and paste the appropriate commands for your operating system.
+
+===============================================================================
+                            COMPILATION
+===============================================================================
+
+WINDOWS                          |  MAC/LINUX
+---------------------------------|-------------------------------------
+cl /EHsc graphGen.cpp /Fe:graphGen.exe    |  g++ -o graphGen graphGen.cpp
+cl /EHsc WA.cpp /Fe:WA.exe               |  g++ -o WA WA.cpp  
+cl /EHsc routeSearch.cpp /Fe:routeSearch.exe |  g++ -o routeSearch routeSearch.cpp
+                                 |  chmod +x graphGen WA routeSearch
+
+===============================================================================
+                            BASIC USAGE
+===============================================================================
+
+TASK                            WINDOWS                    MAC/LINUX
+------------------------------ -------------------------- -----------------
+Generate flight network       .\graphGen.exe 25          ./graphGen 25
+Save graph data               .\graphGen.exe 25 > flight.txt  ./graphGen 25 > flight.txt
+Show adjacency matrix         echo 25 | .\WA.exe         echo 25 | ./WA
+Test shortest path            .\routeSearch.exe 1 "Moscow, Russia" "Tokyo, Japan" 3  ./routeSearch 1 "Moscow, Russia" "Tokyo, Japan" 3
+
+===============================================================================
+                            ALL THREE TASKS
+===============================================================================
+
+WINDOWS COMMANDS:
+----------------
+.\routeSearch.exe 1 "Moscow, Russia" "Tokyo, Japan" 3
+.\routeSearch.exe 2 "Moscow, Russia" through "London, United Kingdom" and "Paris, France" to "Tokyo, Japan"
+.\routeSearch.exe 3 "Moscow, Russia" "London, United Kingdom" "Tokyo, Japan"
+
+MAC/LINUX COMMANDS:
+-------------------
+./routeSearch 1 "Moscow, Russia" "Tokyo, Japan" 3
+./routeSearch 2 "Moscow, Russia" through "London, United Kingdom" and "Paris, France" to "Tokyo, Japan"  
+./routeSearch 3 "Moscow, Russia" "London, United Kingdom" "Tokyo, Japan"
+
+===============================================================================
+                            COMPLETE WORKFLOW
+===============================================================================
+
+WINDOWS (Copy entire block):
+----------------------------
+cd "C:\Users\YourUsername\OneDrive\Desktop\CAproject\Project"
+.\graphGen.exe 25
+.\graphGen.exe 25 > flight.txt
+echo 25 | .\WA.exe  
+.\routeSearch.exe 1 "Moscow, Russia" "Tokyo, Japan" 3
+.\routeSearch.exe 2 "Moscow, Russia" through "London, United Kingdom" and "Paris, France" to "Tokyo, Japan"
+.\routeSearch.exe 3 "Moscow, Russia" "London, United Kingdom" "Tokyo, Japan"
+
+MAC/LINUX (Copy entire block):
+-------------------------------
+cd "/path/to/CAproject/Project"
+./graphGen 25
+./graphGen 25 > flight.txt
+echo 25 | ./WA
+./routeSearch 1 "Moscow, Russia" "Tokyo, Japan" 3
+./routeSearch 2 "Moscow, Russia" through "London, United Kingdom" and "Paris, France" to "Tokyo, Japan"
+./routeSearch 3 "Moscow, Russia" "London, United Kingdom" "Tokyo, Japan"
+
+===============================================================================
+                            CITY NAME EXAMPLES
+===============================================================================
+
+Use these exact city names (copy-paste recommended):
+
+POPULAR CITIES:
+• "Moscow, Russia"
+• "Tokyo, Japan"  
+• "London, United Kingdom"
+• "Paris, France"
+• "New York City, United States"
+• "Sydney, Australia"
+• "Cairo, Egypt"
+• "Mumbai, India"
+• "Berlin, Germany"
+• "Seoul, South Korea"
+
+IMPORTANT: City names are case-sensitive and must match exactly!
+
+===============================================================================
+                            TROUBLESHOOTING
+===============================================================================
+
+PROBLEM                         WINDOWS SOLUTION              MAC/LINUX SOLUTION
+------------------------------- ----------------------------- -------------------
+Command not found              Use .\ prefix                 Use ./ prefix + chmod +x
+Permission denied              Run as Administrator          chmod +x filename
+File not found                Check you're in Project folder Check you're in Project folder
+No route found                Try higher connection limit    Try higher connection limit
+Compilation failed             Install Visual Studio/MinGW   Install build-essential
+
+===============================================================================
+                            BATCH SCRIPTS
+===============================================================================
+
+WINDOWS (save as run_demo.bat):
+-------------------------------
+@echo off
+.\graphGen.exe 25 > flight.txt
+echo 25 | .\WA.exe
+.\routeSearch.exe 1 "Moscow, Russia" "Tokyo, Japan" 3
+pause
+
+MAC/LINUX (save as run_demo.sh):
+--------------------------------
+#!/bin/bash
+./graphGen 25 > flight.txt
+echo 25 | ./WA
+./routeSearch 1 "Moscow, Russia" "Tokyo, Japan" 3
+read -p "Press Enter to exit..."
+
+===============================================================================
+                            FILE LOCATIONS
+===============================================================================
+
+REQUIRED FILES:
+• graphGen.cpp, WA.cpp, routeSearch.cpp (source code)
+• city.name (list of cities)
+• graphGen.exe, WA.exe, routeSearch.exe (Windows executables)
+• graphGen, WA, routeSearch (Mac/Linux executables)
+
+GENERATED FILES:
+• flight.txt (flight connections data)
+
+DOCUMENTATION:
+• README.txt (complete guide)
+• compile_instructions.txt (compilation help)
+• project_summary.txt (technical details)
+
+===============================================================================
+                            QUICK TIPS
+===============================================================================
+
+1. ALWAYS run graphGen first to create flight data
+2. Use echo command to pipe city count to WA program  
+3. City names must be exact - copy from city.name file
+4. Connection limits should be reasonable (1-10)
+5. Check README.txt for complete installation guide
+6. Use project_summary.txt for algorithm explanations
+
+===============================================================================
+                            ACADEMIC USE
+===============================================================================
+
+DEMO COMMANDS FOR PRESENTATION:
+WINDOWS: cross_platform_demo.bat
+MAC/LINUX: chmod +x cross_platform_demo.sh && ./cross_platform_demo.sh
+
+COMPREHENSIVE DOCS:
+• README.txt - Complete user guide with installation
+• compile_instructions.txt - Detailed compilation guide  
+• project_summary.txt - Technical algorithm documentation
+
+===============================================================================
+                            END OF QUICK REFERENCE
+=============================================================================== 

@@ -1,0 +1,282 @@
+===============================================================================
+                        COMPILATION INSTRUCTIONS
+                    FLIGHT ROUTE ANALYSIS SYSTEM
+===============================================================================
+
+This guide provides step-by-step compilation instructions for Windows, macOS, 
+and Linux systems. Choose the appropriate section for your operating system.
+
+===============================================================================
+                            WINDOWS COMPILATION
+===============================================================================
+
+OPTION 1: VISUAL STUDIO (RECOMMENDED)
+--------------------------------------
+
+PREREQUISITES:
+• Visual Studio 2019 or later with C++ development tools
+• OR Visual Studio Build Tools 2019+
+
+SETUP:
+1. Open Command Prompt or PowerShell as Administrator
+2. Navigate to the project directory:
+   cd "C:\Users\YourUsername\OneDrive\Desktop\CAproject\Project"
+
+COMPILATION COMMANDS:
+# Set up Visual Studio environment (if needed)
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
+
+# Compile all programs
+cl /EHsc graphGen.cpp /Fe:graphGen.exe
+cl /EHsc WA.cpp /Fe:WA.exe  
+cl /EHsc routeSearch.cpp /Fe:routeSearch.exe
+
+# Verify compilation
+dir *.exe
+
+OPTION 2: MINGW-W64
+-------------------
+
+PREREQUISITES:
+• MinGW-w64 from https://www.mingw-w64.org/downloads/
+• Add MinGW bin directory to system PATH
+
+INSTALLATION STEPS:
+1. Download and install MinGW-w64
+2. Add C:\mingw64\bin to your PATH environment variable
+3. Restart Command Prompt/PowerShell
+
+COMPILATION COMMANDS:
+g++ -std=c++11 -o graphGen.exe graphGen.cpp
+g++ -std=c++11 -o WA.exe WA.cpp
+g++ -std=c++11 -o routeSearch.exe routeSearch.cpp
+
+OPTION 3: DEV-C++ (BEGINNER FRIENDLY)
+--------------------------------------
+
+PREREQUISITES:
+• Dev-C++ IDE from https://www.bloodshed.net/devcpp.html
+
+STEPS:
+1. Open Dev-C++
+2. File → New → Project → Console Application
+3. Copy source code into the editor
+4. Build → Compile & Run (F11)
+5. Executable will be created in the project folder
+
+===============================================================================
+                            MAC/LINUX COMPILATION  
+===============================================================================
+
+MACOS SETUP:
+------------
+
+PREREQUISITES:
+• Xcode Command Line Tools
+
+INSTALLATION:
+# Install Xcode Command Line Tools
+xcode-select --install
+
+# Verify installation
+gcc --version
+g++ --version
+
+COMPILATION COMMANDS:
+g++ -std=c++11 -o graphGen graphGen.cpp
+g++ -std=c++11 -o WA WA.cpp
+g++ -std=c++11 -o routeSearch routeSearch.cpp
+
+# Set execute permissions
+chmod +x graphGen WA routeSearch
+
+LINUX SETUP (UBUNTU/DEBIAN):
+----------------------------
+
+PREREQUISITES:
+• GCC/G++ compiler
+• Build essentials
+
+INSTALLATION:
+# Update package list
+sudo apt update
+
+# Install build tools
+sudo apt install build-essential
+
+# Verify installation
+gcc --version
+g++ --version
+
+COMPILATION COMMANDS:
+g++ -std=c++11 -o graphGen graphGen.cpp
+g++ -std=c++11 -o WA WA.cpp  
+g++ -std=c++11 -o routeSearch routeSearch.cpp
+
+# Set execute permissions
+chmod +x graphGen WA routeSearch
+
+LINUX SETUP (CENTOS/RHEL):
+--------------------------
+
+PREREQUISITES:
+• Development Tools group
+
+INSTALLATION:
+# Install development tools
+sudo yum groupinstall "Development Tools"
+
+# OR for newer versions
+sudo dnf groupinstall "Development Tools"
+
+COMPILATION COMMANDS:
+g++ -std=c++11 -o graphGen graphGen.cpp
+g++ -std=c++11 -o WA WA.cpp
+g++ -std=c++11 -o routeSearch routeSearch.cpp
+
+# Set execute permissions  
+chmod +x graphGen WA routeSearch
+
+===============================================================================
+                            BATCH COMPILATION
+===============================================================================
+
+WINDOWS BATCH SCRIPT (compile_all.bat):
+---------------------------------------
+@echo off
+echo Compiling all programs...
+cl /EHsc graphGen.cpp /Fe:graphGen.exe
+cl /EHsc WA.cpp /Fe:WA.exe
+cl /EHsc routeSearch.cpp /Fe:routeSearch.exe
+echo Compilation complete!
+pause
+
+MAC/LINUX SHELL SCRIPT (compile_all.sh):
+----------------------------------------
+#!/bin/bash
+echo "Compiling all programs..."
+g++ -std=c++11 -o graphGen graphGen.cpp
+g++ -std=c++11 -o WA WA.cpp
+g++ -std=c++11 -o routeSearch routeSearch.cpp
+chmod +x graphGen WA routeSearch
+echo "Compilation complete!"
+
+# Make script executable and run:
+chmod +x compile_all.sh
+./compile_all.sh
+
+===============================================================================
+                            TROUBLESHOOTING
+===============================================================================
+
+COMMON COMPILATION ERRORS:
+
+ERROR: "command not found" / "not recognized"
+SOLUTION: 
+• Ensure compiler is installed and in PATH
+• Windows: Try "where cl" or "where g++" 
+• Mac/Linux: Try "which g++" or "which gcc"
+
+ERROR: "No such file or directory"
+SOLUTION:
+• Verify you're in the correct directory
+• Check that source files (.cpp) exist
+• Use absolute paths if necessary
+
+ERROR: "Permission denied" (Mac/Linux)
+SOLUTION:
+• Use chmod +x to set execute permissions
+• Ensure you have write access to the directory
+
+ERROR: Missing std::unordered_map or other C++11 features
+SOLUTION:
+• Add -std=c++11 flag to compilation command
+• Use newer compiler version (GCC 4.7+ or Visual Studio 2012+)
+
+COMPILER VERSION REQUIREMENTS:
+• Windows: Visual Studio 2012+ or GCC 4.7+
+• Mac: Xcode 5+ or GCC 4.7+  
+• Linux: GCC 4.7+ or Clang 3.3+
+
+===============================================================================
+                            OPTIMIZATION FLAGS
+===============================================================================
+
+FOR BETTER PERFORMANCE:
+-----------------------
+
+WINDOWS (Visual Studio):
+cl /EHsc /O2 graphGen.cpp /Fe:graphGen.exe
+cl /EHsc /O2 WA.cpp /Fe:WA.exe
+cl /EHsc /O2 routeSearch.cpp /Fe:routeSearch.exe
+
+MAC/LINUX (GCC/Clang):
+g++ -std=c++11 -O2 -o graphGen graphGen.cpp
+g++ -std=c++11 -O2 -o WA WA.cpp
+g++ -std=c++11 -O2 -o routeSearch routeSearch.cpp
+
+DEBUG BUILDS:
+------------
+
+WINDOWS:
+cl /EHsc /Zi /DEBUG graphGen.cpp /Fe:graphGen.exe
+
+MAC/LINUX:  
+g++ -std=c++11 -g -o graphGen graphGen.cpp
+
+===============================================================================
+                            VERIFICATION
+===============================================================================
+
+AFTER COMPILATION, VERIFY SUCCESS:
+
+WINDOWS:
+dir *.exe
+.\graphGen.exe
+echo 5 | .\WA.exe
+
+MAC/LINUX:
+ls -la graphGen WA routeSearch
+./graphGen 5
+echo 5 | ./WA
+
+EXPECTED OUTPUT:
+• graphGen: Should display "Graph generated successfully"
+• WA: Should show city mappings and adjacency matrix
+• routeSearch: Should show usage instructions
+
+===============================================================================
+                            MAKEFILE (OPTIONAL)
+===============================================================================
+
+For advanced users, create a Makefile:
+
+LINUX/MAC (Makefile):
+--------------------
+CXX = g++
+CXXFLAGS = -std=c++11 -O2 -Wall
+
+all: graphGen WA routeSearch
+
+graphGen: graphGen.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $<
+
+WA: WA.cpp  
+	$(CXX) $(CXXFLAGS) -o $@ $<
+
+routeSearch: routeSearch.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $<
+
+clean:
+	rm -f graphGen WA routeSearch
+
+.PHONY: all clean
+
+USAGE:
+make          # Compile all
+make clean    # Remove executables
+make graphGen # Compile only graphGen
+
+===============================================================================
+END OF COMPILATION INSTRUCTIONS
+=============================================================================== 
